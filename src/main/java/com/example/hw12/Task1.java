@@ -3,9 +3,9 @@ package com.example.hw12;
 public class Task1 {
 
   public static void main(String[] args) {
-    Thread timeThread = new Thread(() -> {
-      int seconds = 0;
+    long startTime = System.currentTimeMillis();
 
+    Thread timeThread = new Thread(() -> {
       while (true) {
         try {
           Thread.sleep(1000);
@@ -14,8 +14,8 @@ public class Task1 {
           return;
         }
 
-        seconds++;
-        System.out.println("Минуло " + seconds + " секунд");
+        long seconds = (System.currentTimeMillis() - startTime) / 1000;
+        System.out.println("Час від запуску: " + seconds + " с");
       }
     });
 
